@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   createUser(authData: AuthData) {
-    this.http.post(API_BASE_URL + 'signup', authData).subscribe(
+    this.http.post(API_BASE_URL + '/signup', authData).subscribe(
       (resp) => {
         console.log(resp);
         this.router.navigate(['/']);
@@ -68,7 +68,7 @@ export class AuthService {
       .post<{
         status: {};
         data: { token: string; expiresIn: number; userId: string };
-      }>(API_BASE_URL + 'login', authData)
+      }>(API_BASE_URL + '/login', authData)
       .subscribe(
         (resp) => {
           console.log(resp);

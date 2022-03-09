@@ -33,7 +33,7 @@ export class TasksService {
   }
 
   getTask(id: string | null) {
-    return this.http.get<{ status: {}; data: Task }>(API_BASE_URL + id);
+    return this.http.get<{ status: {}; data: Task }>(API_BASE_URL +'/'+ id);
   }
 
   updateTask(task: Task) {
@@ -49,7 +49,7 @@ export class TasksService {
       taskData.append('image', task.imagePath, task.title);
     }
     this.http
-      .put<{ status: {}; data: Task }>(API_BASE_URL + task._id, taskData)
+      .put<{ status: {}; data: Task }>(API_BASE_URL + '/'+task._id, taskData)
       .subscribe((resp) => {
         this.router.navigate(['/']);
       });
@@ -73,7 +73,7 @@ export class TasksService {
 
   deleteTask(id: string) {
     // console.log('id', id);
-    return this.http.delete(API_BASE_URL + id);
+    return this.http.delete(API_BASE_URL +'/'+ id);
   }
 }
 
