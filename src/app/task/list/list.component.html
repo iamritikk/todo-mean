@@ -9,7 +9,7 @@
       <img [src]="task.imagePath" alt="task.title" />
     </div>
     <mat-panel-title>{{ task.description }} </mat-panel-title>
-    <mat-action-row *ngIf="userIsAuthenticated && task.creator === userId">
+    <mat-action-row *ngIf="userIsAuthenticated ">
       <button mat-button color="warn" [routerLink]="['/edit', task._id]">
         Edit
       </button>
