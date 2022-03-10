@@ -27,10 +27,10 @@ export class CreateTaskComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('taskId')) {
         this.taskForm = new FormGroup({
-          title: new FormControl(null, {
-            validators: [Validators.required, Validators.minLength(4)],
+          title: new FormControl('', {
+            validators: [Validators.required, Validators.minLength(3)],
           }),
-          description: new FormControl(null, {
+          description: new FormControl('', {
             validators: [Validators.required],
           }),
           image: new FormControl(null, {
@@ -84,7 +84,11 @@ export class CreateTaskComponent implements OnInit {
   }
 
   onSaveTask() {
-    if (!this.taskForm.valid) {
+    if (
+      !this.taskForm.valid ||
+      this.taskForm.value.title.trim().length === 0 ||
+      this.taskForm.value.description.trim().length === 0
+    ) {
       return;
     }
     const task: Task = {

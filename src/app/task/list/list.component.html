@@ -2,14 +2,17 @@
 <mat-accordion>
   <mat-expansion-panel *ngFor="let task of storedTasks">
     <mat-expansion-panel-header>
-      <mat-panel-title>{{ task.title }}</mat-panel-title>
+      <mat-panel-title style="word-break: break-all"
+      >{{ task.title }}</mat-panel-title>
     </mat-expansion-panel-header>
     <p></p>
     <div class="task-image">
       <img [src]="task.imagePath" alt="task.title" />
     </div>
-    <mat-panel-title>{{ task.description }} </mat-panel-title>
-    <mat-action-row *ngIf="userIsAuthenticated ">
+    <mat-panel-title style="word-break: break-all"
+      >{{ task.description }}
+    </mat-panel-title>
+    <mat-action-row *ngIf="userIsAuthenticated">
       <button mat-button color="warn" [routerLink]="['/edit', task._id]">
         Edit
       </button>
